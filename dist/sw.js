@@ -1,4 +1,4 @@
-const CACHE='g2cashify-v4';
+const CACHE='g2cashify-v5';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./offline.html','./manifest.webmanifest','./logo.png','./g2c-logo-high-res.png','./icon.svg?v=3'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS))));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('g2cashify-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
