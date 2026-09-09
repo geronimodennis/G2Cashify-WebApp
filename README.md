@@ -1,6 +1,8 @@
 # G2Cashify
 
-Cloudflare production: https://g2cashify.geronimodennis.workers.dev
+Cloudflare production: https://g2cashify.com
+
+The Cloudflare fallback URL remains available at https://g2cashify.geronimodennis.workers.dev.
 
 Run `npm ci`, sign in with `npx wrangler login`, then run `npm run deploy` to publish the `dist` assets to Cloudflare. Deployment is manual; GitHub pushes do not automatically publish this Cloudflare site.
 
