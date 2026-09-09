@@ -1,1 +1,14 @@
-{"name":"g2cashify","version":"1.0.0","private":true,"scripts":{"start":"node server.mjs","check":"node --check dist/app.js && node --check dist/sw.js"}}
+{
+  "name": "g2cashify",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node --check dist/app.js && node --check dist/sw.js",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.130.0"
+  }
+}
