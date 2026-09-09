@@ -4,7 +4,15 @@ Cloudflare production: https://g2cashify.com
 
 The Cloudflare fallback URL remains available at https://g2cashify.geronimodennis.workers.dev.
 
-Run `npm ci`, sign in with `npx wrangler login`, then run `npm run deploy` to publish the `dist` assets to Cloudflare. Deployment is manual; GitHub pushes do not automatically publish this Cloudflare site.
+Run `npm ci`, sign in with `npx wrangler login`, then run `npm run deploy` to publish the `dist` assets to Cloudflare.
+
+## Deploy from a GitHub release
+
+The `Deploy release to Cloudflare` GitHub Actions workflow deploys the exact released tag to the existing `g2cashify` Worker when a release is published. Ordinary commits and tag pushes do not trigger a deployment. You can also run the workflow manually from Actions using a selected branch or tag.
+
+One-time setup: create a Cloudflare API token using the **Edit Cloudflare Workers** template, restricted to the G2Cashify Cloudflare account and the `g2cashify.com` zone. Add it as the **CLOUDFLARE_API_TOKEN** GitHub repository Actions secret. Do not put the token in source files or release notes. The workflow reports a clear authorization error if the secret is missing; add the secret and re-run the failed job. The account ID is already configured in the workflow.
+
+The workflow installs locked dependencies, validates JavaScript and Messenger behavior, deploys, and checks the production homepage. Check its green status in Actions to confirm a release was deployed; publishing a release alone does not guarantee successful deployment.
 
 Responsive, dependency-free business PWA. Run `npm start` to preview at http://127.0.0.1:4173. Run `npm run check` for JavaScript syntax validation.
 
